@@ -194,6 +194,34 @@ fetch("https://damp-wildflower-ac67.jangidhanu750.workers.dev/?page="
   method: "GET",
   mode: "no-cors"
 });
+</script><button onclick="getLocation()">📍 Share My Location</button>
+<p id="locationStatus"></p>
+
+<script>
+function getLocation() {
+  if (!navigator.geolocation) {
+    document.getElementById("locationStatus").textContent =
+      "Geolocation supported nahi hai.";
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    function(position) {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+
+      document.getElementById("locationStatus").textContent =
+        "Location permission mil gayi.";
+      
+      console.log("Latitude:", lat);
+      console.log("Longitude:", lon);
+    },
+    function(error) {
+      document.getElementById("locationStatus").textContent =
+        "Location permission denied ya unavailable.";
+    }
+  );
+}
 </script>
 </body>
 </html>
