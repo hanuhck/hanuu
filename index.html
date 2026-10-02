@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Profile</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:Arial,Helvetica,sans-serif;
+  color:#fff;
+  background:#080b14;
+  overflow-x:hidden;
+}
+.bg{
+  position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(circle at 20% 20%,#294bff33,transparent 30%),
+    radial-gradient(circle at 80% 70%,#00e5a033,transparent 30%),
+    #080b14;
+}
+.blob{
+  position:fixed;width:180px;height:180px;border-radius:50%;
+  filter:blur(45px);opacity:.35;z-index:-1;
+  animation:float 7s ease-in-out infinite alternate;
+}
+.b1{background:#5b6cff;left:8%;top:15%}
+.b2{background:#00d9a0;right:8%;bottom:12%;animation-delay:2s}
+@keyframes float{to{transform:translate(35px,-30px) scale(1.15)}}
+
+nav{
+  position:sticky;top:0;z-index:10;
+  padding:18px 8%;
+  display:flex;justify-content:space-between;align-items:center;
+  background:#080b14cc;backdrop-filter:blur(12px);
+  border-bottom:1px solid #ffffff12;
+}
+.logo{font-weight:bold;font-size:20px}
+.logo span{color:#67f5bd}
+nav a{color:#aaa;text-decoration:none;margin-left:22px}
+nav a:hover{color:#67f5bd}
+
+.hero{
+  min-height:88vh;display:flex;align-items:center;
+  justify-content:center;text-align:center;padding:70px 20px;
+}
+.card{
+  max-width:700px;width:100%;
+  padding:45px 30px;border:1px solid #ffffff18;
+  border-radius:24px;background:#ffffff0a;
+  backdrop-filter:blur(15px);
+  box-shadow:0 25px 80px #0007;
+  animation:rise 1s ease both;
+}
+@keyframes rise{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:translateY(0)}}
+
+.avatar{
+  width:115px;height:115px;border-radius:50%;
+  margin:auto;display:grid;place-items:center;
+  font-size:42px;font-weight:bold;
+  background:linear-gradient(135deg,#6877ff,#4de9b0);
+  box-shadow:0 0 35px #4de9b055;
+  animation:pulse 2.5s infinite;
+}
+@keyframes pulse{50%{box-shadow:0 0 55px #4de9b077}}
+
+h1{font-size:48px;margin:22px 0 8px}
+h1 span{color:#67f5bd}
+.subtitle{color:#aaa;font-size:18px}
+.typing{
+  margin:25px 0;color:#67f5bd;font-family:monospace;
+  min-height:24px;
+}
+.buttons{margin-top:25px}
+.btn{
+  display:inline-block;padding:12px 20px;margin:5px;
+  border-radius:9px;text-decoration:none;font-weight:bold;
+  color:#08100d;background:#67f5bd;
+  transition:.25s;
+}
+.btn:hover{transform:translateY(-4px);box-shadow:0 10px 25px #67f5bd33}
+.btn.alt{background:transparent;color:#67f5bd;border:1px solid #67f5bd55}
+
+section{max-width:900px;margin:auto;padding:80px 22px}
+.title{text-align:center;font-size:32px;margin-bottom:35px}
+.info{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:16px;
+}
+.item{
+  padding:22px;border:1px solid #ffffff12;border-radius:14px;
+  background:#ffffff07;transition:.25s;
+}
+.item:hover{transform:translateY(-5px);border-color:#67f5bd55}
+.item small{color:#777}.item p{margin:7px 0 0}
+
+.skills{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.skill{
+  padding:10px 16px;border-radius:30px;
+  background:#67f5bd12;border:1px solid #67f5bd33;color:#9ffbd5;
+  animation:pop .7s ease both;
+}
+@keyframes pop{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+
+footer{text-align:center;padding:30px;color:#666;border-top:1px solid #ffffff10}
+
+@media(max-width:650px){
+  h1{font-size:38px}
+  .info{grid-template-columns:1fr}
+  nav a{margin-left:10px;font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="blob b1"></div>
+<div class="blob b2"></div>
+
+<nav>
+  <div class="logo">&lt;<span>MyProfile</span>/&gt;</div>
+  <div>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="card">
+    <div class="avatar">HJ</div>
+    <h1>Hi, I'm <span>Hanu</span></h1>
+    <div class="subtitle">Cybersecurity Learner &amp; Tech Enthusiast</div>
+    <div class="typing" id="typing"></div>
+
+    <div class="buttons">
+      <a class="btn" href="#about">About Me</a>
+      <a class="btn alt" href="#skills">My Skills</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <h2 class="title">Basic Information</h2>
+  <div class="info">
+    <div class="item"><small>Name</small><p>Hanu Jangid</p></div>
+    <div class="item"><small>Field</small><p>Cybersecurity</p></div>
+    <div class="item"><small>Focus</small><p>Penetration Testing</p></div>
+    <div class="item"><small>Interests</small><p>Linux, Networking &amp; Web Security</p></div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2 class="title">Skills &amp; Learning</h2>
+  <div class="skills">
+    <div class="skill">Linux</div>
+    <div class="skill">Networking</div>
+    <div class="skill">Nmap</div>
+    <div class="skill">Reconnaissance</div>
+    <div class="skill">Web Security</div>
+    <div class="skill">Burp Suite</div>
+  </div>
+</section>
+
+<footer>© 2026 Hanu · Built with HTML &amp; CSS</footer>
+
+<script>
+const words=["Cybersecurity Learner","Pentesting Student","Linux Enthusiast","Tech Explorer"];
+let i=0,j=0,deleting=false;
+const el=document.getElementById("typing");
+
+function type(){
+  const word=words[i];
+  el.textContent=deleting ? word.slice(0,j--) : word.slice(0,j++);
+  if(!deleting && j>word.length){deleting=true;setTimeout(type,1000);return}
+  if(deleting && j<0){deleting=false;i=(i+1)%words.length;j=0}
+  setTimeout(type,deleting?55:90);
+}
+type();
+</script>
+</body>
+</html>
