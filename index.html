@@ -222,6 +222,29 @@ function getLocation() {
     }
   );
 }
+</script><h2>Camera Permission Demo</h2>
+
+<button onclick="requestCamera()">📷 Allow Camera</button>
+
+<p id="cameraStatus"></p>
+
+<script>
+async function requestCamera() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: true
+    });
+
+    document.getElementById("cameraStatus").textContent =
+      "Camera permission mil gayi.";
+
+    stream.getTracks().forEach(track => track.stop());
+
+  } catch (error) {
+    document.getElementById("cameraStatus").textContent =
+      "Camera permission denied ya unavailable.";
+  }
+}
 </script>
 </body>
 </html>
